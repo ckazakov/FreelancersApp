@@ -1,0 +1,26 @@
+﻿<Window x:Class="FreelancersApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FreelancersApp"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Вход" Height="200" Width="200" ResizeMode="NoResize" Icon="logos/logopswd.png" Background="#FFCAD4D4" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Image Grid.Row="0" VerticalAlignment="Center"  Source="logos/pswd.png" />
+        <TextBlock HorizontalAlignment="Center" Grid.Row="1" Text="Пароль" VerticalAlignment="Top" FontSize="16"/>
+        <PasswordBox x:Name="PasswordTextBox" HorizontalAlignment="Center" Width="120"  Grid.Row="1" Grid.RowSpan="1" FontSize="14" SelectionBrush="#FF2E76A8" TabIndex="1" Height="25" VerticalAlignment="Bottom" VerticalContentAlignment="Center" MaxLength="12" HorizontalContentAlignment="Center" />
+        <Button Content="Войти" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" Width="120" FontSize="14" Height="28" Click="Button_Click"/>
+       
+
+    </Grid>
+</Window>
