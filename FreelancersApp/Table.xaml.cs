@@ -21,7 +21,9 @@ namespace FreelancersApp
     {
 
         SqlConnection sqlConnection;
-       
+
+
+     
 
         public Table()
         {
@@ -84,6 +86,8 @@ namespace FreelancersApp
         public void MouseLeftClickToRow(object sender, MouseEventArgs e)
         {
             index = DataGridv.ItemContainerGenerator.IndexFromContainer((DataGridRow)sender);
+            columnPath = DataGridv.CurrentColumn.SortMemberPath.ToString();
+            columnValue = DataGridv.CurrentColumn.Header.ToString();
         }
 
 
@@ -94,10 +98,6 @@ namespace FreelancersApp
             DataGridv.SelectedItem = DataGridv.Items[index];
             //DataGridv.ScrollIntoView(DataGridv.Items[index]);
 
-             columnPath = DataGridv.CurrentColumn.SortMemberPath.ToString();
-
-
-             columnValue = DataGridv.CurrentCell.Column.Header.ToString();
 
              rowID = ((DataRowView)DataGridv.SelectedItems[0]).Row["Id"].ToString();
              newValue = ((TextBox)e.EditingElement).Text;
@@ -137,23 +137,8 @@ namespace FreelancersApp
 
         private void userWasBlocked(object sender, RoutedEventArgs e)
         {
-            
-        }
-
-        private void DataGridv_LoadingRow(object sender, DataGridRowEventArgs e)
-        {
-
-            string rowIDd = ((DataRowView)DataGridv.Items[0]).Row["Id"].ToString();
-            txts.Text = rowIDd;
-
-            if (e.Row.GetIndex()== Convert.ToInt32(rowIDd))
-            {
-                e.Row.Background = new SolidColorBrush(Colors.Red);
-            }
              
-            
-
-            
         }
+
     }
 }
