@@ -6,9 +6,9 @@
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:FreelancersApp"
         mc:Ignorable="d"
-        Title="Table" Height="915" Width="1296" Loaded="Window_Loaded" Closing="Window_Closing">
+        Title="Список Фрилансеров" Height="915" Width="1296" Loaded="Window_Loaded" Closing="Window_Closing" Icon="free.png">
     <Grid>
-        <DataGrid x:Name="DataGridv" Margin="0,0,0,526" ScrollViewer.HorizontalScrollBarVisibility="Visible" CellEditEnding="DataGridv_CellEditEnding" AutoGenerateColumns ="False" SelectionMode="Single" SelectionUnit="FullRow"  >
+        <DataGrid x:Name="DataGridv" Margin="0,0,0,76" ScrollViewer.HorizontalScrollBarVisibility="Visible" CellEditEnding="DataGridv_CellEditEnding" AutoGenerateColumns ="False" SelectionMode="Single" SelectionUnit="FullRow" BeginningEdit="DataGridv_BeginningEdit"  >
             <DataGrid.Resources>
                 <Style TargetType="DataGridRow">
                     <EventSetter Event="MouseLeftButtonUp" Handler="MouseLeftClickToRow"/>
@@ -42,34 +42,37 @@
                 <materialDesign:DataGridTextColumn  Binding="{Binding PayoneerLogin}" Header="Payoneer" />
                 <materialDesign:DataGridTextColumn  Binding="{Binding PayoneerPass}" Header="Payoneer Пароль" />
                 <materialDesign:DataGridTextColumn  Binding="{Binding PayoneerQuestion}" Header="Payoneer Секретный Вопрос?" />
-                <materialDesign:DataGridTextColumn  Binding="{Binding PayoneerAnswer}" Header="Быстрая потеря веса" />
-                <materialDesign:DataGridTextColumn  Binding="{Binding PayoneerCode}" Header="Быстрая потеря веса" />
-                <materialDesign:DataGridTextColumn  Binding="{Binding PaypalEmail}" Header="Быстрая потеря веса" />
-                <materialDesign:DataGridTextColumn  Binding="{Binding PaypalPass}" Header="Быстрая потеря веса" />
-                <materialDesign:DataGridTextColumn  Binding="{Binding PaypalVerify}" Header="Быстрая потеря веса" />
-                <materialDesign:DataGridTextColumn  Binding="{Binding QiwiPhone}" Header="Быстрая потеря веса" />
-                <materialDesign:DataGridTextColumn  Binding="{Binding QiwiPass}" Header="Быстрая потеря веса" />
-                <materialDesign:DataGridTextColumn  Binding="{Binding BankName}" Header="Быстрая потеря веса" />
-                <materialDesign:DataGridTextColumn  Binding="{Binding BankCardNumber}" Header="Быстрая потеря веса" />
-                <materialDesign:DataGridTextColumn  Binding="{Binding BankCardMonthYear}" Header="Быстрая потеря веса" />
-                <materialDesign:DataGridTextColumn  Binding="{Binding BankCardCvc}" Header="Быстрая потеря веса" />
-                <materialDesign:DataGridTextColumn  Binding="{Binding BankNumber20}" Header="Быстрая потеря веса" />
-                <materialDesign:DataGridTextColumn  Binding="{Binding BankBIC}" Header="Быстрая потеря веса" />
-                <materialDesign:DataGridTextColumn  Binding="{Binding BankINN}" Header="Быстрая потеря веса" />
-                <materialDesign:DataGridTextColumn  Binding="{Binding HomeAddress}" Header="Быстрая потеря веса" />
+                <materialDesign:DataGridTextColumn  Binding="{Binding PayoneerAnswer}" Header="Ответ" />
+                <materialDesign:DataGridTextColumn  Binding="{Binding PaypalEmail}" Header="PayPal Email" />
+                <materialDesign:DataGridTextColumn  Binding="{Binding PaypalPass}" Header="PayPal Пароль" />
+                <materialDesign:DataGridTextColumn  Binding="{Binding PaypalVerify}" Header="PayPal V" />
+                <materialDesign:DataGridTextColumn  Binding="{Binding QiwiPhone}" Header="QIWI Номер" />
+                <materialDesign:DataGridTextColumn  Binding="{Binding QiwiPass}" Header="QIWI Пароль" />
+                <materialDesign:DataGridTextColumn  Binding="{Binding BankName}" Header="Банк" />
+                <materialDesign:DataGridTextColumn  Binding="{Binding BankCardNumber}" Header="Номер карты" />
+                <materialDesign:DataGridTextColumn  Binding="{Binding BankCardMonthYear}" Header="MM/YY" />
+                <materialDesign:DataGridTextColumn  Binding="{Binding BankCardCvc}" Header="Код" />
+                <materialDesign:DataGridTextColumn  Binding="{Binding BankNumber20}" Header="Банковский счет" />
+                <materialDesign:DataGridTextColumn  Binding="{Binding BankBIC}" Header="БИК" />
+                <materialDesign:DataGridTextColumn  Binding="{Binding BankINN}" Header="ИНН" />
+                <materialDesign:DataGridTextColumn  Binding="{Binding HomeAddress}" Header="Прописка" />
+                <materialDesign:DataGridTextColumn  Binding="{Binding Anydesk}" Header="Anydesk" />
+
 
             </DataGrid.Columns>
         </DataGrid>
-        <TextBlock x:Name="txts" HorizontalAlignment="Left" Margin="350,549,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="35" Width="750"><Run Text="TextBlock"/></TextBlock>
-        <Button Content="Заблокирован" Style="{StaticResource MaterialDesignRaisedAccentButton}" HorizontalAlignment="Left" Margin="163,627,0,232"  Width="219" Height="Auto" FontSize="11" Padding="0" FontWeight="Normal" Click="userWasBlocked" />
+
+        <Button Content="Добавить Фрилансера" Style="{StaticResource MaterialDesignRaisedAccentButton}" Margin="29,0,0,21" Height="37" FontSize="11" Padding="0" FontWeight="Normal" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="219" Click="Button_Click" />
+        <Button Content="Обновить Таблицу" Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="534,0,534,24" Height="28" FontSize="11" Padding="0" FontWeight="Normal" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="220" Click="btnRefreshTable"  />
+        <Button Content="Удалить" Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="0,0,21,24" Height="28" FontSize="11" Padding="0" FontWeight="Normal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="220" Click="btnDeleteRow" Background="#FFFF8E76" BorderBrush="#FFE47A7A"  />
 
 
-        <materialDesign:DialogHost BorderBrush="{DynamicResource MaterialDesignDivider}" HorizontalAlignment="Left" Width="1299" Margin="0,0,0,-3" Grid.RowSpan="8" x:Name="dialogg" >
+        <materialDesign:DialogHost BorderBrush="{DynamicResource MaterialDesignDivider}" Margin="0,0,-8,-3" x:Name="dialogg" >
             <materialDesign:DialogHost.DialogContent >
-                <Grid Width="300" Height="150" HorizontalAlignment="Center"  >
-                    <StackPanel Orientation="Horizontal" Margin="15" >
-                        <materialDesign:PackIcon x:Name="PopIcon" Kind="AccountEditOutline" Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10 0 -15 35"/>
-                        <TextBlock x:Name="PopTextBox" Foreground="#FF000000" Width="200" Margin="25" TextWrapping="Wrap">
+                <Grid Width="350" Height="200" HorizontalAlignment="Center"  >
+                    <StackPanel Orientation="Vertical" Margin="15" >
+                        <materialDesign:PackIcon x:Name="PopIcon" Kind="AccountEditOutline" Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5,0,5"/>
+                        <TextBlock x:Name="PopTextBox" Foreground="#FF000000" Width="300" Margin="10,0,10,0" HorizontalAlignment="Center" TextWrapping="Wrap" FontSize="14">
                             Вы уверены что хотите изменить значение?
                         </TextBlock>
                     </StackPanel>
@@ -78,6 +81,27 @@
                     </StackPanel>
                     <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right">
                         <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"  Style="{StaticResource MaterialDesignOutlinedButton}" Margin="10" HorizontalAlignment="Right" >Отмена</Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
+
+
+        
+        <materialDesign:DialogHost BorderBrush="{DynamicResource MaterialDesignDivider}" Margin="0,0,-8,-3" x:Name="AlertDeleteRow" >
+            <materialDesign:DialogHost.DialogContent >
+                <Grid Width="300" Height="150" HorizontalAlignment="Center"  >
+                    <StackPanel Orientation="Vertical" Margin="15" >
+                        <materialDesign:PackIcon Kind="DeleteForever" Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5,0,5" Foreground="#DDF73434"/>
+                        <TextBlock x:Name="txtBlockDelete" Foreground="#FF000000" Width="250" Margin="10,0,10,0" HorizontalAlignment="Center" TextWrapping="Wrap" FontSize="14">
+                            Вы уверены что хотите удалить?
+                        </TextBlock>
+                    </StackPanel>
+                    <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Left">
+                        <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignOutlinedButton}" Margin="10" HorizontalAlignment="Left" Click="btnDeleteAccept" Background="#B2FF3535" Foreground="#FF494444" BorderBrush="#1F898989"  >Удалить навсегда!</Button>
+                    </StackPanel>
+                    <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                        <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"  Style="{StaticResource MaterialDesignOutlinedButton}" Margin="10" HorizontalAlignment="Right" Foreground="#FF535353" >Отмена</Button>
                     </StackPanel>
                 </Grid>
             </materialDesign:DialogHost.DialogContent>

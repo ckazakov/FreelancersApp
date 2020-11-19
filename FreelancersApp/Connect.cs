@@ -13,7 +13,7 @@ namespace FreelancersApp
     {
 
         public readonly MySqlConnection MySQLconnection = new MySqlConnection("server=localhost;port=3306;username=root;database=test");
-        public readonly SqlConnection SQLconnection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\C#\Freelancers\FreelancersApp\FreelancersApp\DBFreelancers.mdf;Integrated Security=True");
+        public readonly SqlConnection SQLconnection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\DBFreelancers.mdf;Integrated Security=True");
 
 
         // MySQL ПОДКЛЮЧЕНИЯ К ОНЛАЙН БАЗЕ!

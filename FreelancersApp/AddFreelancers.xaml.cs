@@ -24,11 +24,11 @@ namespace FreelancersApp
         public AddFreelancers()
         {
             InitializeComponent();
+            
 
             getGeneretedPassowords();
             registredDate.Text = DateTime.Today.ToString("d MMMM", CultureInfo.CreateSpecificCulture("en-us"));
 
-            progressBar.Visibility = Visibility.Hidden;
 
 
         }
@@ -90,14 +90,14 @@ namespace FreelancersApp
 
         public void btnAddFreelancer_Click(object sender, RoutedEventArgs e)
         {
-        
+            DialogAddFreelancer.IsOpen = true;
 
-            try { connect.MySQLopenConnection(); }
-            catch {
-                PopIcon.Height = 0;
-                PopErrorIcon.Height = 35;
-                PopTextBox.Margin = new Thickness(10,0,0,0);
-                PopTextBox.Text = "#1 Не удалось открыть соединение с онлайн сервером!\n"; }
+ //           try { connect.MySQLopenConnection(); }
+ //           catch {
+ //               PopIcon.Height = 0;
+ //               PopErrorIcon.Height = 35;
+ //               PopTextBox.Margin = new Thickness(10,0,0,0);
+ //               PopTextBox.Text = "#1 Не удалось открыть соединение с онлайн сервером!\n"; }
 
             try { connect.SQLopenConnection(); }
             catch
@@ -105,7 +105,7 @@ namespace FreelancersApp
                 PopIcon.Height = 0;
                 PopErrorIcon.Height = 35;
                 PopTextBox.Margin = new Thickness(10, 0, 0, 0);
-                PopTextBox.Text += "#1.1 Не удалось открыть соединение с локальной базой данных SQL, возможно указан неправильный путь до файла!\n";
+                PopTextBox.Text = "#1.1 Не удалось открыть соединение с локальной базой данных SQL, возможно указан неправильный путь до файла!\n";
             }
 
 
@@ -123,7 +123,7 @@ namespace FreelancersApp
             string PayoneerPass = payoneerPass.Text;
             string PayoneerQuestion = txtbxPayoneerQuestion.Text;
             string PayoneerAnswer = txtbxPayoneerAnswer.Text;
-            string PayoneerCode = txtbxPayoneerCode.Text;
+            
 
             string PaypalEmail = txtbxPaypalEmail.Text;
             string PaypalPass = paypalPass.Text;
@@ -146,12 +146,14 @@ namespace FreelancersApp
 
             string HomeAddress = txtbxHomeAddress.Text;
 
+            string Anydesk = txtAnydesk.Text;
 
-            string MySQL = $"INSERT INTO `testtable` (FullName,DateOfBirth,UserEmail,EmailPass,PhoneNumber,RegistredDate,FreelancerLogin,FreelancerPass,PayoneerLogin,PayoneerPass,PayoneerQuestion,PayoneerAnswer,PayoneerCode,PaypalEmail,PaypalPass,PaypalVerify,QiwiPhone,QiwiPass,BankName,BankCardNumber,BankCardMonthYear,BankCardCvc,BankNumber20,BankBIC,BankINN,HomeAddress) " +
-                                          $"VALUES (@FullName,@DateOfBirth,@UserEmail,@EmailPass,@PhoneNumber,@RegistredDate,@FreelancerLogin,@FreelancerPass,@PayoneerLogin,@PayoneerPass,@PayoneerQuestion,@PayoneerAnswer,@PayoneerCode,@PaypalEmail,@PaypalPass,@PaypalVerify,@QiwiPhone,@QiwiPass,@BankName,@BankCardNumber,@BankCardMonthYear,@BankCardCvc,@BankNumber20,@BankBIC,@BankINN,@HomeAddress)";
 
-            string SQL = $"INSERT INTO [Table] (FullName,DateOfBirth,UserEmail,EmailPass,PhoneNumber,RegistredDate,FreelancerLogin,FreelancerPass,PayoneerLogin,PayoneerPass,PayoneerQuestion,PayoneerAnswer,PayoneerCode,PaypalEmail,PaypalPass,PaypalVerify,QiwiPhone,QiwiPass,BankName,BankCardNumber,BankCardMonthYear,BankCardCvc,BankNumber20,BankBIC,BankINN,HomeAddress) " +
-                                          $"VALUES (@FullName,@DateOfBirth,@UserEmail,@EmailPass,@PhoneNumber,@RegistredDate,@FreelancerLogin,@FreelancerPass,@PayoneerLogin,@PayoneerPass,@PayoneerQuestion,@PayoneerAnswer,@PayoneerCode,@PaypalEmail,@PaypalPass,@PaypalVerify,@QiwiPhone,@QiwiPass,@BankName,@BankCardNumber,@BankCardMonthYear,@BankCardCvc,@BankNumber20,@BankBIC,@BankINN,@HomeAddress)";
+            string MySQL = $"INSERT INTO `testtable` (FullName,DateOfBirth,UserEmail,EmailPass,PhoneNumber,RegistredDate,FreelancerLogin,FreelancerPass,PayoneerLogin,PayoneerPass,PayoneerQuestion,PayoneerAnswer,PaypalEmail,PaypalPass,PaypalVerify,QiwiPhone,QiwiPass,BankName,BankCardNumber,BankCardMonthYear,BankCardCvc,BankNumber20,BankBIC,BankINN,HomeAddress,Anydesk) " +
+                                          $"VALUES (@FullName,@DateOfBirth,@UserEmail,@EmailPass,@PhoneNumber,@RegistredDate,@FreelancerLogin,@FreelancerPass,@PayoneerLogin,@PayoneerPass,@PayoneerQuestion,@PayoneerAnswer,@PaypalEmail,@PaypalPass,@PaypalVerify,@QiwiPhone,@QiwiPass,@BankName,@BankCardNumber,@BankCardMonthYear,@BankCardCvc,@BankNumber20,@BankBIC,@BankINN,@HomeAddress,@Anydesk)";
+
+            string SQL = $"INSERT INTO [Table] (FullName,DateOfBirth,UserEmail,EmailPass,PhoneNumber,RegistredDate,FreelancerLogin,FreelancerPass,PayoneerLogin,PayoneerPass,PayoneerQuestion,PayoneerAnswer,PaypalEmail,PaypalPass,PaypalVerify,QiwiPhone,QiwiPass,BankName,BankCardNumber,BankCardMonthYear,BankCardCvc,BankNumber20,BankBIC,BankINN,HomeAddress,Anydesk) " +
+                                          $"VALUES (@FullName,@DateOfBirth,@UserEmail,@EmailPass,@PhoneNumber,@RegistredDate,@FreelancerLogin,@FreelancerPass,@PayoneerLogin,@PayoneerPass,@PayoneerQuestion,@PayoneerAnswer,@PaypalEmail,@PaypalPass,@PaypalVerify,@QiwiPhone,@QiwiPass,@BankName,@BankCardNumber,@BankCardMonthYear,@BankCardCvc,@BankNumber20,@BankBIC,@BankINN,@HomeAddress,@Anydesk)";
 
 
             MySqlCommand command = new MySqlCommand(MySQL, connect.GetMySQLConnection());
@@ -183,8 +185,6 @@ namespace FreelancersApp
             sqlCommand.Parameters.AddWithValue("@PayoneerQuestion", PayoneerQuestion);
             command.Parameters.Add("@PayoneerAnswer", MySqlDbType.VarChar).Value = PayoneerAnswer;
             sqlCommand.Parameters.AddWithValue("@PayoneerAnswer", PayoneerAnswer);
-            command.Parameters.Add("@PayoneerCode", MySqlDbType.VarChar).Value = PayoneerCode;
-            sqlCommand.Parameters.AddWithValue("@PayoneerCode", PayoneerCode);
 
             command.Parameters.Add("@PaypalEmail", MySqlDbType.VarChar).Value = PaypalEmail;
             sqlCommand.Parameters.AddWithValue("@PaypalEmail", PaypalEmail);
@@ -217,24 +217,27 @@ namespace FreelancersApp
             command.Parameters.Add("@HomeAddress", MySqlDbType.VarChar).Value = HomeAddress;
             sqlCommand.Parameters.AddWithValue("@HomeAddress", HomeAddress);
 
-            try
-            {
-                if (command.ExecuteNonQuery() == 1)
-                {
-                    progressBar.Visibility = Visibility.Hidden;
+            command.Parameters.Add("@Anydesk", MySqlDbType.VarChar).Value = Anydesk;
+            sqlCommand.Parameters.AddWithValue("@Anydesk", Anydesk);
 
-                    PopIcon.Height = 35;
-                    PopErrorIcon.Height = 0;
-                    PopTextBox.Margin = new Thickness(25, 25, 25, 25);
-                    PopTextBox.Text = "Фрилансер успешно добавлен в базу данных!";
+            //try
+            //{
+            //    if (command.ExecuteNonQuery() == 1)
+            //    {
+            //        progressBar.Visibility = Visibility.Hidden;
 
-                } else
-                {
-                    PopTextBox.Text = "Возникла ошибка добавления фрилансера в базу данных, возможен конфликт полей или проблема загрузки таблицы! Проверьте соответствие названий таблицы и всех ее полей!";
-                }
-            } catch {
-                PopTextBox.Text += "#2 Ошибка подключения к базе данных!";
-            }
+            //        PopIcon.Height = 35;
+            //        PopErrorIcon.Height = 0;
+            //        PopTextBox.Margin = new Thickness(25, 25, 25, 25);
+            //        PopTextBox.Text = "Фрилансер успешно добавлен в онлайн базу данных!";
+
+            //    } else
+            //    {
+            //        PopTextBox.Text = "Возникла ошибка добавления фрилансера в онлайн базу данных, возможен конфликт полей или проблема загрузки таблицы! Проверьте соответствие названий таблицы и всех ее полей!";
+            //    }
+            //} catch {
+            //    PopTextBox.Text += "#2 Ошибка подключения к базе данных!";
+            //}
 
 
             // ДОБАВЛЕНИЕ В ЛОКАЛЬНУЮ БАЗУ!
@@ -242,12 +245,12 @@ namespace FreelancersApp
             {
                 if (sqlCommand.ExecuteNonQuery() == 1)
                 {
-                    progressBar.Visibility = Visibility.Hidden;
+                   
 
                     PopIcon.Height = 35;
                     PopErrorIcon.Height = 0;
                     PopTextBox.Margin = new Thickness(25, 25, 25, 25);
-                    PopTextBox.Text = "Фрилансер успешно добавлен в базу данных!";
+                    PopTextBox.Text = "Фрилансер успешно добавлен в локальную базу данных!";
 
                 }
                 else
@@ -256,11 +259,11 @@ namespace FreelancersApp
                 }
             } catch
             {
-                PopTextBox.Text = "Возникла ошибка добавления фрилансера в ЛОКАЛЬНУЮ БАЗУ!";
+                PopTextBox.Text = "Не удалось добавить фрилансера в ЛОКАЛЬНУЮ БАЗУ!";
             }
 
 
-            connect.MySQLcloseConnection();
+            //connect.MySQLcloseConnection();
             connect.SQLcloseConnection();
 
 
@@ -269,6 +272,7 @@ namespace FreelancersApp
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Table table = new Table();
+            
             table.Show();
             connect.MySQLcloseConnection();
             connect.SQLcloseConnection();

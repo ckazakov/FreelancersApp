@@ -19,11 +19,9 @@ namespace FreelancersApp
 {
     public partial class Table : Window
     {
+        SqlConnection sqlConnection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\DBFreelancers.mdf;Integrated Security=True");
+        DataTable dataTable = new DataTable("Freelancersss");
 
-        SqlConnection sqlConnection;
-
-
-     
 
         public Table()
         {
@@ -38,8 +36,8 @@ namespace FreelancersApp
 
             try
             {
+                dataTable.Clear();
                 SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
-                DataTable dataTable = new DataTable("Freelancersss");
                 dataAdapter.Fill(dataTable);
                 DataGridv.ItemsSource = dataTable.DefaultView;
 
@@ -57,15 +55,12 @@ namespace FreelancersApp
 
             public async void Window_Loaded(object sender, RoutedEventArgs e)
             {
-            string sqlConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\C#\Freelancers\FreelancersApp\FreelancersApp\DBFreelancers.mdf;Integrated Security=True";
-                   sqlConnection = new SqlConnection(sqlConnectionString);
+
 
             await sqlConnection.OpenAsync();
 
             FillOrUpdateTable();
 
-
-            
 
 
         }   
@@ -83,12 +78,26 @@ namespace FreelancersApp
         string columnValue;
         string rowID;
         string newValue;
+        string oldCellValue;
         public void MouseLeftClickToRow(object sender, MouseEventArgs e)
         {
             index = DataGridv.ItemContainerGenerator.IndexFromContainer((DataGridRow)sender);
             columnPath = DataGridv.CurrentColumn.SortMemberPath.ToString();
             columnValue = DataGridv.CurrentColumn.Header.ToString();
+
+            
+           
         }
+
+        public void DataGridv_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
+        {
+            DataRowView rowView = e.Row.Item as DataRowView;
+
+            oldCellValue = rowView[DataGridv.CurrentColumn.DisplayIndex].ToString();
+
+
+        }
+
 
 
         public void DataGridv_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
@@ -98,22 +107,26 @@ namespace FreelancersApp
             DataGridv.SelectedItem = DataGridv.Items[index];
             //DataGridv.ScrollIntoView(DataGridv.Items[index]);
 
+            
 
              rowID = ((DataRowView)DataGridv.SelectedItems[0]).Row["Id"].ToString();
              newValue = ((TextBox)e.EditingElement).Text;
 
+            if (oldCellValue != newValue)
+            {
+                PopTextBox.Text = "Изменение значения \n" + oldCellValue + "\n->\n" + newValue;
+                dialogg.IsOpen = true;
 
-            dialogg.IsOpen = true;
+            }
 
-            
 
         }
 
         private void Apply_Changes(object sender, RoutedEventArgs e)
         {
-            txts.Text = rowID + "   " + newValue + " " + columnPath + " " + columnValue;
+ 
 
-            string sqlUpdateQuery = $"UPDATE [Table] SET {columnPath}='{newValue}' WHERE ID={rowID}";
+            string sqlUpdateQuery = $"UPDATE [Table] SET {columnPath}=N'{newValue}' WHERE ID={rowID}";
 
             SqlCommand updateCommand = new SqlCommand(sqlUpdateQuery, sqlConnection);
 
@@ -135,10 +148,53 @@ namespace FreelancersApp
             FillOrUpdateTable();
         }
 
-        private void userWasBlocked(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
+
              
+            AddFreelancers addFreelancers = new AddFreelancers();
+
+            addFreelancers.Show();
+            
+
         }
 
+
+        public void btnRefreshTable(object sender, RoutedEventArgs e)
+        {
+
+            FillOrUpdateTable();
+        }
+
+        public void btnDeleteRow(object sender, RoutedEventArgs e)
+        {
+            AlertDeleteRow.IsOpen = true;
+
+         
+        }
+
+        public void btnDeleteAccept(object sender, RoutedEventArgs e)
+        {
+            int indx = Convert.ToInt32(index) + 1;
+
+            string sqlDeleteQuery = $"DELETE FROM [Table] WHERE ID ={indx}";
+            SqlCommand deleteCommand = new SqlCommand(sqlDeleteQuery, sqlConnection);
+
+
+
+            try
+            {
+                deleteCommand.ExecuteNonQuery();
+                FillOrUpdateTable();
+            }
+            catch (Exception ex)
+            {
+                if (sqlConnection != null && sqlConnection.State != ConnectionState.Closed)
+                {
+                    sqlConnection.Close();
+                }
+                MessageBox.Show(ex.Message.ToString(), ex.Source.ToString(), MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
     }
 }
