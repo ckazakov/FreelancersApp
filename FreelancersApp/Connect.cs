@@ -1,56 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using MySql.Data.MySqlClient;
-using System.Data.SqlClient;
+﻿using System.Data.OleDb;
 
 namespace FreelancersApp
 {
     class Connect
     {
 
-        public readonly MySqlConnection MySQLconnection = new MySqlConnection("server=localhost;port=3306;username=root;database=test");
-        public readonly SqlConnection SQLconnection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\DBFreelancers.mdf;Integrated Security=True");
+        public readonly OleDbConnection oleDbConnection = new OleDbConnection(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|\DBFreelancers.mdb;Persist Security Info=False;");
 
-
-        // MySQL ПОДКЛЮЧЕНИЯ К ОНЛАЙН БАЗЕ!
-        public void MySQLopenConnection()
+        public void OpenOleDbConnection()
         {
-            if (MySQLconnection.State == System.Data.ConnectionState.Closed)
-                MySQLconnection.Open();
+            if (oleDbConnection.State == System.Data.ConnectionState.Closed)
+                oleDbConnection.Open();
         }
 
-        public void MySQLcloseConnection()
+        public void CloseOleDbConnection()
         {
-            if (MySQLconnection.State == System.Data.ConnectionState.Open)
-                MySQLconnection.Close();
+            if (oleDbConnection.State == System.Data.ConnectionState.Open)
+                oleDbConnection.Close();
         }
 
-        public MySqlConnection GetMySQLConnection()
+        public OleDbConnection GetOleDbConnection()
         {
-            return MySQLconnection;
-        }
-
-         // SQL ПОДКЛЮЧЕНИЯ К ЛОКАЛЬНОЙ БАЗЕ ДАННЫХ!
-
-        public void SQLopenConnection()
-        {
-            if (SQLconnection.State == System.Data.ConnectionState.Closed)
-                SQLconnection.Open();
-        }
-
-        public void SQLcloseConnection()
-        {
-            if (SQLconnection.State == System.Data.ConnectionState.Open)
-                SQLconnection.Close();
-        }
-
-        public SqlConnection GetSQLConnection()
-        {
-            return SQLconnection;
+            return oleDbConnection;
         }
     }
 }

@@ -6,7 +6,7 @@
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:FreelancersApp"
         mc:Ignorable="d"
-        Title="Список Фрилансеров" Height="915" Width="1296" Loaded="Window_Loaded" Closing="Window_Closing" Icon="free.png">
+        Title="Список Фрилансеров" Height="915" Width="1296" Icon="free.png">
     <Grid>
         <DataGrid x:Name="DataGridv" Margin="0,0,0,76" ScrollViewer.HorizontalScrollBarVisibility="Visible" CellEditEnding="DataGridv_CellEditEnding" AutoGenerateColumns ="False" SelectionMode="Single" SelectionUnit="FullRow" BeginningEdit="DataGridv_BeginningEdit"  >
             <DataGrid.Resources>
@@ -36,27 +36,27 @@
                 <materialDesign:DataGridTextColumn  Binding="{Binding UserEmail}" Header="Email" />
                 <materialDesign:DataGridTextColumn  Binding="{Binding EmailPass}" Header="Email Пароль" />
                 <materialDesign:DataGridTextColumn  Binding="{Binding PhoneNumber}" Header="Номер телефона" />
-                <materialDesign:DataGridTextColumn  Binding="{Binding RegistredDate}" Header="Дата Регистрации" />
-                <materialDesign:DataGridTextColumn  Binding="{Binding FreelancerLogin}" Header="Freelancer Логин" />
-                <materialDesign:DataGridTextColumn  Binding="{Binding FreelancerPass}" Header="Freelancer Пароль" />
                 <materialDesign:DataGridTextColumn  Binding="{Binding PayoneerLogin}" Header="Payoneer" />
                 <materialDesign:DataGridTextColumn  Binding="{Binding PayoneerPass}" Header="Payoneer Пароль" />
                 <materialDesign:DataGridTextColumn  Binding="{Binding PayoneerQuestion}" Header="Payoneer Секретный Вопрос?" />
                 <materialDesign:DataGridTextColumn  Binding="{Binding PayoneerAnswer}" Header="Ответ" />
-                <materialDesign:DataGridTextColumn  Binding="{Binding PaypalEmail}" Header="PayPal Email" />
-                <materialDesign:DataGridTextColumn  Binding="{Binding PaypalPass}" Header="PayPal Пароль" />
-                <materialDesign:DataGridTextColumn  Binding="{Binding PaypalVerify}" Header="PayPal V" />
-                <materialDesign:DataGridTextColumn  Binding="{Binding QiwiPhone}" Header="QIWI Номер" />
-                <materialDesign:DataGridTextColumn  Binding="{Binding QiwiPass}" Header="QIWI Пароль" />
-                <materialDesign:DataGridTextColumn  Binding="{Binding BankName}" Header="Банк" />
                 <materialDesign:DataGridTextColumn  Binding="{Binding BankCardNumber}" Header="Номер карты" />
                 <materialDesign:DataGridTextColumn  Binding="{Binding BankCardMonthYear}" Header="MM/YY" />
                 <materialDesign:DataGridTextColumn  Binding="{Binding BankCardCvc}" Header="Код" />
+                <materialDesign:DataGridTextColumn  Binding="{Binding Anydesk}" Header="Anydesk" />
+                <materialDesign:DataGridTextColumn  Binding="{Binding QiwiPhone}" Header="QIWI Номер" />
+                <materialDesign:DataGridTextColumn  Binding="{Binding QiwiPass}" Header="QIWI Пароль" />
+                <materialDesign:DataGridTextColumn  Binding="{Binding PaypalEmail}" Header="PayPal Email" />
+                <materialDesign:DataGridTextColumn  Binding="{Binding PaypalPass}" Header="PayPal Пароль" />
+                <materialDesign:DataGridTextColumn  Binding="{Binding PaypalVerify}" Header="PayPal V" />
+                <materialDesign:DataGridTextColumn  Binding="{Binding BankName}" Header="Банк" />
                 <materialDesign:DataGridTextColumn  Binding="{Binding BankNumber20}" Header="Банковский счет" />
                 <materialDesign:DataGridTextColumn  Binding="{Binding BankBIC}" Header="БИК" />
                 <materialDesign:DataGridTextColumn  Binding="{Binding BankINN}" Header="ИНН" />
                 <materialDesign:DataGridTextColumn  Binding="{Binding HomeAddress}" Header="Прописка" />
-                <materialDesign:DataGridTextColumn  Binding="{Binding Anydesk}" Header="Anydesk" />
+                <materialDesign:DataGridTextColumn  Binding="{Binding FreelancerLogin}" Header="Freelancer Логин" />
+                <materialDesign:DataGridTextColumn  Binding="{Binding FreelancerPass}" Header="Freelancer Пароль" />
+                <materialDesign:DataGridTextColumn  Binding="{Binding RegistredDate}" Header="Дата Регистрации" />
 
 
             </DataGrid.Columns>

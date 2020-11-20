@@ -1,77 +1,50 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
+using System.Data.OleDb;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Data;
-using System.Data.SqlClient;
-using MySql.Data.MySqlClient;
 
 namespace FreelancersApp
 {
     public partial class Table : Window
     {
-        SqlConnection sqlConnection = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\DBFreelancers.mdf;Integrated Security=True");
-        DataTable dataTable = new DataTable("Freelancersss");
 
+        Connect connect = new Connect();
 
         public Table()
         {
             InitializeComponent();
+
+            connect.OpenOleDbConnection();
+
+            FillOrUpdateTable();
             
+
 
         }
 
         public void FillOrUpdateTable()
         {
-            SqlCommand command = new SqlCommand("SELECT * FROM [Table]", sqlConnection);
+            OleDbCommand command = new OleDbCommand("SELECT * FROM [Table]", connect.oleDbConnection);
 
-            try
-            {
-                dataTable.Clear();
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
-                dataAdapter.Fill(dataTable);
-                DataGridv.ItemsSource = dataTable.DefaultView;
-
-            }
-            catch (Exception ex)
-            {
-                if (sqlConnection != null && sqlConnection.State != ConnectionState.Closed)
-                {
-                    sqlConnection.Close();
-                }
-                MessageBox.Show(ex.Message.ToString(), ex.Source.ToString(), MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            OleDbDataAdapter dataAdapter = new OleDbDataAdapter(command);
+            DataSet dataset = new DataSet();
+            dataAdapter.Fill(dataset,"[Table]");
+            DataGridv.ItemsSource = dataset.Tables["[Table]"].DefaultView;
         }
 
-
-            public async void Window_Loaded(object sender, RoutedEventArgs e)
-            {
-
-
-            await sqlConnection.OpenAsync();
-
-            FillOrUpdateTable();
-
-
-
-        }   
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        public void getRowID()
         {
-            if (sqlConnection != null && sqlConnection.State != ConnectionState.Closed)
+            var selectedRowID = DataGridv.SelectedCells[0].Column.GetCellContent(DataGridv.SelectedCells[0].Item);
+            if (selectedRowID is TextBlock)
             {
-                sqlConnection.Close();
+               rowID = (selectedRowID as TextBlock).Text;
+                MessageBox.Show(rowID);
             }
         }
+
+
 
         int index;
         string columnPath;
@@ -81,16 +54,20 @@ namespace FreelancersApp
         string oldCellValue;
         public void MouseLeftClickToRow(object sender, MouseEventArgs e)
         {
+
+            getRowID();
+
             index = DataGridv.ItemContainerGenerator.IndexFromContainer((DataGridRow)sender);
             columnPath = DataGridv.CurrentColumn.SortMemberPath.ToString();
             columnValue = DataGridv.CurrentColumn.Header.ToString();
-
-            
            
+
         }
 
         public void DataGridv_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
         {
+            
+
             DataRowView rowView = e.Row.Item as DataRowView;
 
             oldCellValue = rowView[DataGridv.CurrentColumn.DisplayIndex].ToString();
@@ -103,14 +80,14 @@ namespace FreelancersApp
         public void DataGridv_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
 
-            
+
             DataGridv.SelectedItem = DataGridv.Items[index];
             //DataGridv.ScrollIntoView(DataGridv.Items[index]);
 
-            
 
-             rowID = ((DataRowView)DataGridv.SelectedItems[0]).Row["Id"].ToString();
-             newValue = ((TextBox)e.EditingElement).Text;
+            getRowID();
+
+            newValue = ((TextBox)e.EditingElement).Text;
 
             if (oldCellValue != newValue)
             {
@@ -124,26 +101,13 @@ namespace FreelancersApp
 
         private void Apply_Changes(object sender, RoutedEventArgs e)
         {
- 
+
 
             string sqlUpdateQuery = $"UPDATE [Table] SET {columnPath}=N'{newValue}' WHERE ID={rowID}";
 
-            SqlCommand updateCommand = new SqlCommand(sqlUpdateQuery, sqlConnection);
+            OleDbCommand updateCommand = new OleDbCommand(sqlUpdateQuery, connect.oleDbConnection);
 
-            try
-            {
-                updateCommand.ExecuteNonQuery();
-            }
-            catch (Exception ex)
-            {
-                if (sqlConnection != null && sqlConnection.State != ConnectionState.Closed)
-                {
-                    sqlConnection.Close();
-                }
-                MessageBox.Show(ex.Message.ToString(), ex.Source.ToString(), MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-
-
+            updateCommand.ExecuteNonQuery();
 
             FillOrUpdateTable();
         }
@@ -151,18 +115,18 @@ namespace FreelancersApp
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-             
+
             AddFreelancers addFreelancers = new AddFreelancers();
 
             addFreelancers.Show();
-            
+            connect.CloseOleDbConnection();
+
 
         }
 
 
         public void btnRefreshTable(object sender, RoutedEventArgs e)
         {
-
             FillOrUpdateTable();
         }
 
@@ -170,7 +134,7 @@ namespace FreelancersApp
         {
             AlertDeleteRow.IsOpen = true;
 
-         
+
         }
 
         public void btnDeleteAccept(object sender, RoutedEventArgs e)
@@ -178,23 +142,17 @@ namespace FreelancersApp
             int indx = Convert.ToInt32(index) + 1;
 
             string sqlDeleteQuery = $"DELETE FROM [Table] WHERE ID ={indx}";
-            SqlCommand deleteCommand = new SqlCommand(sqlDeleteQuery, sqlConnection);
+            OleDbCommand deleteCommand = new OleDbCommand(sqlDeleteQuery, connect.oleDbConnection);
 
 
+            deleteCommand.ExecuteNonQuery();
+            FillOrUpdateTable();
 
-            try
-            {
-                deleteCommand.ExecuteNonQuery();
-                FillOrUpdateTable();
-            }
-            catch (Exception ex)
-            {
-                if (sqlConnection != null && sqlConnection.State != ConnectionState.Closed)
-                {
-                    sqlConnection.Close();
-                }
-                MessageBox.Show(ex.Message.ToString(), ex.Source.ToString(), MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            connect.CloseOleDbConnection();
         }
     }
 }

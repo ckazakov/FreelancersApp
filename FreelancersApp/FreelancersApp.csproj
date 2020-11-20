@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{27D109D2-E9FB-473A-83E3-B3AFEF070CBB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Фрилансеры</RootNamespace>
-    <AssemblyName>Фрилансеры</AssemblyName>
+    <RootNamespace>Freelancers</RootNamespace>
+    <AssemblyName>Freelancers</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -74,7 +74,7 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>free.ico</ApplicationIcon>
+    <ApplicationIcon>freelancer-logo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Crypto, Version=1.8.3.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
@@ -259,6 +259,10 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="freelancer-logo.ico" />
+    <Resource Include="Logo.ico" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="DBFreelancers.mdf">
