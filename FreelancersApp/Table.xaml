@@ -62,9 +62,11 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Content="Добавить Фрилансера" Style="{StaticResource MaterialDesignRaisedAccentButton}" Margin="29,0,0,21" Height="37" FontSize="11" Padding="0" FontWeight="Normal" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="219" Click="Button_Click" />
-        <Button Content="Обновить Таблицу" Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="534,0,534,24" Height="28" FontSize="11" Padding="0" FontWeight="Normal" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="220" Click="btnRefreshTable"  />
-        <Button Content="Удалить" Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="0,0,21,24" Height="28" FontSize="11" Padding="0" FontWeight="Normal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="220" Click="btnDeleteRow" Background="#FFFF8E76" BorderBrush="#FFE47A7A"  />
+        <Button Content="Добавить Фрилансера" Style="{StaticResource MaterialDesignRaisedAccentButton}" Margin="21,0,0,24" Height="28" FontSize="11" Padding="0" FontWeight="Normal" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="219" Click="Button_Click" />
+        <Button Content="Обновить Таблицу" Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="250,0,0,24" Height="28" FontSize="11" Padding="0" FontWeight="Normal" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="220" Click="btnRefreshTable"  />
+        <Button Content="Таблица заблокированных" Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="0,0,0,24" Height="28" FontSize="11" Padding="0" FontWeight="Normal" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="220" Click="" Background="#FFF3E9AD" BorderBrush="#FFF3F79D"  />
+        <Button Content="Заблокирован " Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="0,0,250,24" Height="28" FontSize="11" Padding="0" FontWeight="Normal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="220" Click="" Background="#FFF3B9AD" BorderBrush="#FFF79D9D"  />
+        <Button Content="Удалить строку" Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="0,0,21,24" Height="28" FontSize="11" Padding="0" FontWeight="Normal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="220" Click="btnDeleteRow" Background="#FFFF8E76" BorderBrush="#FFE47A7A"  />
 
 
         <materialDesign:DialogHost BorderBrush="{DynamicResource MaterialDesignDivider}" Margin="0,0,-8,-3" x:Name="dialogg" >
@@ -87,7 +89,7 @@
         </materialDesign:DialogHost>
 
 
-        
+
         <materialDesign:DialogHost BorderBrush="{DynamicResource MaterialDesignDivider}" Margin="0,0,-8,-3" x:Name="AlertDeleteRow" >
             <materialDesign:DialogHost.DialogContent >
                 <Grid Width="300" Height="150" HorizontalAlignment="Center"  >

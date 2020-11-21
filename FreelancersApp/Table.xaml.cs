@@ -34,16 +34,6 @@ namespace FreelancersApp
             DataGridv.ItemsSource = dataset.Tables["[Table]"].DefaultView;
         }
 
-        public void getRowID()
-        {
-            var selectedRowID = DataGridv.SelectedCells[0].Column.GetCellContent(DataGridv.SelectedCells[0].Item);
-            if (selectedRowID is TextBlock)
-            {
-               rowID = (selectedRowID as TextBlock).Text;
-                MessageBox.Show(rowID);
-            }
-        }
-
 
 
         int index;
@@ -55,11 +45,11 @@ namespace FreelancersApp
         public void MouseLeftClickToRow(object sender, MouseEventArgs e)
         {
 
-            getRowID();
-
             index = DataGridv.ItemContainerGenerator.IndexFromContainer((DataGridRow)sender);
             columnPath = DataGridv.CurrentColumn.SortMemberPath.ToString();
             columnValue = DataGridv.CurrentColumn.Header.ToString();
+           
+            DataGridv.SelectedItem = DataGridv.Items[index];
            
 
         }
@@ -85,7 +75,12 @@ namespace FreelancersApp
             //DataGridv.ScrollIntoView(DataGridv.Items[index]);
 
 
-            getRowID();
+            var selectedRowID = DataGridv.SelectedCells[0].Column.GetCellContent(DataGridv.SelectedCells[0].Item);
+            if (selectedRowID is TextBlock)
+            {
+                rowID = (selectedRowID as TextBlock).Text;
+                
+            }
 
             newValue = ((TextBox)e.EditingElement).Text;
 
@@ -103,7 +98,7 @@ namespace FreelancersApp
         {
 
 
-            string sqlUpdateQuery = $"UPDATE [Table] SET {columnPath}=N'{newValue}' WHERE ID={rowID}";
+            string sqlUpdateQuery = $"UPDATE [Table] SET {columnPath}='{newValue}' WHERE ID={rowID}";
 
             OleDbCommand updateCommand = new OleDbCommand(sqlUpdateQuery, connect.oleDbConnection);
 
