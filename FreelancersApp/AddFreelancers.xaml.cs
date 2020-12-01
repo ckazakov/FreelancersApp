@@ -131,8 +131,8 @@ namespace FreelancersApp
 
 
 
-            string SQL = $"INSERT INTO [Table] (FullName,DateOfBirth,UserEmail,EmailPass,PhoneNumber,RegistredDate,FreelancerLogin,FreelancerPass,PayoneerLogin,PayoneerPass,PayoneerQuestion,PayoneerAnswer,PaypalEmail,PaypalPass,PaypalVerify,QiwiPhone,QiwiPass,BankName,BankCardNumber,BankCardMonthYear,BankCardCvc,BankNumber20,BankBIC,BankINN,HomeAddress,Anydesk) " +
-                                          $"VALUES (@FullName,@DateOfBirth,@UserEmail,@EmailPass,@PhoneNumber,@RegistredDate,@FreelancerLogin,@FreelancerPass,@PayoneerLogin,@PayoneerPass,@PayoneerQuestion,@PayoneerAnswer,@PaypalEmail,@PaypalPass,@PaypalVerify,@QiwiPhone,@QiwiPass,@BankName,@BankCardNumber,@BankCardMonthYear,@BankCardCvc,@BankNumber20,@BankBIC,@BankINN,@HomeAddress,@Anydesk)";
+            string SQL = $"INSERT INTO [Table] (FullName,DateOfBirth,UserEmail,EmailPass,QiwiPhone,QiwiPass,PayoneerLogin,PayoneerPass,PayoneerQuestion,PayoneerAnswer,Anydesk,BankName,BankCardNumber,BankCardMonthYear,BankCardCvc,PaypalEmail,PaypalPass,PaypalVerify,BankNumber20,BankBIC,BankINN,PhoneNumber,HomeAddress,FreelancerLogin,FreelancerPass,RegistredDate) " +
+                                     $"VALUES (@FullName,@DateOfBirth,@UserEmail,@EmailPass,@QiwiPhone,@QiwiPass,@PayoneerLogin,@PayoneerPass,@PayoneerQuestion,@PayoneerAnswer,@Anydesk,@BankName,@BankCardNumber,@BankCardMonthYear,@BankCardCvc,@PaypalEmail,@PaypalPass,@PaypalVerify,@BankNumber20,@BankBIC,@BankINN,@PhoneNumber,@HomeAddress,@FreelancerLogin,@FreelancerPass,@RegistredDate)";
 
 
 
@@ -143,36 +143,38 @@ namespace FreelancersApp
             oleDbCommand.Parameters.AddWithValue("@DateOfBirth", DateOfBirth);
             oleDbCommand.Parameters.AddWithValue("@UserEmail", UserEmail);
             oleDbCommand.Parameters.AddWithValue("@EmailPass", EmailPass);
-            oleDbCommand.Parameters.AddWithValue("@PhoneNumber", PhoneNumber);
-            oleDbCommand.Parameters.AddWithValue("@RegistredDate", RegistredDate);
 
-            oleDbCommand.Parameters.AddWithValue("@FreelancerLogin", FreelancerLogin);
-            oleDbCommand.Parameters.AddWithValue("@FreelancerPass", FreelancerPass);
-            
+            oleDbCommand.Parameters.AddWithValue("@QiwiPhone", QiwiPhone);
+            oleDbCommand.Parameters.AddWithValue("@QiwiPass", QiwiPass);
+
             oleDbCommand.Parameters.AddWithValue("@PayoneerLogin", PayoneerLogin);
             oleDbCommand.Parameters.AddWithValue("@PayoneerPass", PayoneerPass);
             oleDbCommand.Parameters.AddWithValue("@PayoneerQuestion", PayoneerQuestion);
             oleDbCommand.Parameters.AddWithValue("@PayoneerAnswer", PayoneerAnswer);
-            
-            oleDbCommand.Parameters.AddWithValue("@PaypalEmail", PaypalEmail);
-            oleDbCommand.Parameters.AddWithValue("@PaypalPass", PaypalPass);
-            oleDbCommand.Parameters.AddWithValue("@PaypalVerify", PaypalVerify);
-            
-            oleDbCommand.Parameters.AddWithValue("@QiwiPhone", QiwiPhone);
-            oleDbCommand.Parameters.AddWithValue("@QiwiPass", QiwiPass);
-            
+
+            oleDbCommand.Parameters.AddWithValue("@Anydesk", Anydesk);
+
             oleDbCommand.Parameters.AddWithValue("@BankName", BankName);
             oleDbCommand.Parameters.AddWithValue("@BankCardNumber", BankCardNumber);
             oleDbCommand.Parameters.AddWithValue("@BankCardMonthYear", BankCardMonthYear);
             oleDbCommand.Parameters.AddWithValue("@BankCardCvc", BankCardCvc);
-            
+
+            oleDbCommand.Parameters.AddWithValue("@PaypalEmail", PaypalEmail);
+            oleDbCommand.Parameters.AddWithValue("@PaypalPass", PaypalPass);
+            oleDbCommand.Parameters.AddWithValue("@PaypalVerify", PaypalVerify);
+
             oleDbCommand.Parameters.AddWithValue("@BankNumber20", BankNumber20);
             oleDbCommand.Parameters.AddWithValue("@BankBIC", BankBIC);
             oleDbCommand.Parameters.AddWithValue("@BankINN", BankINN);
-            
+            oleDbCommand.Parameters.AddWithValue("@PhoneNumber", PhoneNumber);
+
             oleDbCommand.Parameters.AddWithValue("@HomeAddress", HomeAddress);
-            
-            oleDbCommand.Parameters.AddWithValue("@Anydesk", Anydesk);
+
+            oleDbCommand.Parameters.AddWithValue("@FreelancerLogin", FreelancerLogin);
+            oleDbCommand.Parameters.AddWithValue("@FreelancerPass", FreelancerPass);
+
+            oleDbCommand.Parameters.AddWithValue("@RegistredDate", RegistredDate);
+
 
             try
             {
@@ -216,5 +218,6 @@ namespace FreelancersApp
         {
             connect.CloseOleDbConnection();
         }
+
     }
 }

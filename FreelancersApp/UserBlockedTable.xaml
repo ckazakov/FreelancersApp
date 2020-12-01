@@ -1,0 +1,100 @@
+﻿<Window x:Class="FreelancersApp.UserBlockedTable"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:FreelancersApp"
+        mc:Ignorable="d"
+        Title="Заблокированные" Height="700" Width="1296" Icon="freeBlocked.png" Background="#FFF9ECEC" Closing="Window_Closing">
+    <Grid >
+        <DataGrid x:Name="DataGridv" Margin="0,0,0,76" ScrollViewer.HorizontalScrollBarVisibility="Visible" AutoGenerateColumns ="False" SelectionMode="Single" SelectionUnit="FullRow" Background="#FFF9ECEC"   >
+            <DataGrid.Resources>
+                <Style TargetType="DataGridRow">
+                    <EventSetter Event="MouseLeftButtonUp" Handler="MouseLeftClickToRow"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver"
+                             Value="True">
+                            <Setter Property="Background"
+                                Value="#FFECECEC" />
+                        </Trigger>
+                        <Trigger Property="IsEditing"
+                             Value="True">
+                            <Setter Property="Background"
+                                Value="#68A2DADA" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.Resources>
+
+            <DataGrid.Columns>
+                <materialDesign:DataGridTextColumn  Binding="{Binding Id}" Header="ID" IsReadOnly="True"/>
+                <materialDesign:DataGridTextColumn  Binding="{Binding FullName}" Header="Имя Фамилия Отчество" IsReadOnly="True"/>
+                <materialDesign:DataGridTextColumn  Binding="{Binding DateOfBirth}"  Header="Дата Рождения"  IsReadOnly="True"/>
+                <materialDesign:DataGridTextColumn  Binding="{Binding UserEmail}" Header="Email" IsReadOnly="True"/>
+                <materialDesign:DataGridTextColumn  Binding="{Binding EmailPass}" Header="Email Пароль" IsReadOnly="True"/>
+                <materialDesign:DataGridTextColumn  Binding="{Binding PhoneNumber}" Header="Номер телефона" IsReadOnly="True"/>
+                <materialDesign:DataGridTextColumn  Binding="{Binding PayoneerLogin}" Header="Payoneer" IsReadOnly="True"/>
+                <materialDesign:DataGridTextColumn  Binding="{Binding PayoneerPass}" Header="Payoneer Пароль" IsReadOnly="True"/>
+                <materialDesign:DataGridTextColumn  Binding="{Binding PayoneerQuestion}" Header="Payoneer Секретный Вопрос?" IsReadOnly="True"/>
+                <materialDesign:DataGridTextColumn  Binding="{Binding PayoneerAnswer}" Header="Ответ" IsReadOnly="True"/>
+                <materialDesign:DataGridTextColumn  Binding="{Binding BankCardNumber}" Header="Номер карты" IsReadOnly="True"/>
+                <materialDesign:DataGridTextColumn  Binding="{Binding BankCardMonthYear}" Header="MM/YY" IsReadOnly="True"/>
+                <materialDesign:DataGridTextColumn  Binding="{Binding BankCardCvc}" Header="Код" IsReadOnly="True"/>
+                <materialDesign:DataGridTextColumn  Binding="{Binding Anydesk}" Header="Anydesk" IsReadOnly="True"/>
+                <materialDesign:DataGridTextColumn  Binding="{Binding QiwiPhone}" Header="QIWI Номер" IsReadOnly="True"/>
+                <materialDesign:DataGridTextColumn  Binding="{Binding QiwiPass}" Header="QIWI Пароль" IsReadOnly="True"/>
+                <materialDesign:DataGridTextColumn  Binding="{Binding PaypalEmail}" Header="PayPal Email" IsReadOnly="True"/>
+                <materialDesign:DataGridTextColumn  Binding="{Binding PaypalPass}" Header="PayPal Пароль" IsReadOnly="True"/>
+                <materialDesign:DataGridTextColumn  Binding="{Binding PaypalVerify}" Header="PayPal V" IsReadOnly="True"/>
+                <materialDesign:DataGridTextColumn  Binding="{Binding BankName}" Header="Банк" IsReadOnly="True" />
+                <materialDesign:DataGridTextColumn  Binding="{Binding BankNumber20}" Header="Банковский счет" IsReadOnly="True"/>
+                <materialDesign:DataGridTextColumn  Binding="{Binding BankBIC}" Header="БИК" IsReadOnly="True"/>
+                <materialDesign:DataGridTextColumn  Binding="{Binding BankINN}" Header="ИНН" IsReadOnly="True"/>
+                <materialDesign:DataGridTextColumn  Binding="{Binding HomeAddress}" Header="Прописка" IsReadOnly="True"/>
+                <materialDesign:DataGridTextColumn  Binding="{Binding FreelancerLogin}" Header="Freelancer Логин" IsReadOnly="True"/>
+                <materialDesign:DataGridTextColumn  Binding="{Binding FreelancerPass}" Header="Freelancer Пароль" IsReadOnly="True"/>
+                <materialDesign:DataGridTextColumn  Binding="{Binding RegistredDate}" Header="Дата Регистрации" IsReadOnly="True"/>
+
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Content="Главная таблица" Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="21,0,0,24" Height="28" FontSize="11" Padding="0" FontWeight="Normal" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="220" Click="btnGoToMainTable" Background="#FFF3E9AD" BorderBrush="#FFF3F79D"  />
+        <Button Content="Разблокирован" Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="0,0,0,24" Height="28" FontSize="11" Padding="0" FontWeight="Normal" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="220" Click="ClickBtnUnbanned" Background="#FFBBF7A4" BorderBrush="#FFA5F79D"  />
+        <Button Content="Удалить строку" Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="0,0,21,24" Height="28" FontSize="11" Padding="0" FontWeight="Normal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="220" Click="btnDeleteRow" Background="#FFFF8E76" BorderBrush="#FFE47A7A"  />
+
+
+
+
+        <materialDesign:DialogHost BorderBrush="{DynamicResource MaterialDesignDivider}" Margin="0,0,-8,-3" x:Name="AlertDeleteRow" >
+            <materialDesign:DialogHost.DialogContent >
+                <Grid Width="300" Height="150" HorizontalAlignment="Center"  >
+                    <StackPanel Orientation="Vertical" Margin="15" >
+                        <materialDesign:PackIcon Kind="DeleteForever" Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5,0,5" Foreground="#DDF73434"/>
+                        <TextBlock x:Name="txtBlockDelete" Foreground="#FF000000" Width="250" Margin="10,0,10,0" HorizontalAlignment="Center" TextWrapping="Wrap" FontSize="14">
+                            
+                        </TextBlock>
+                    </StackPanel>
+                    <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Left">
+                        <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignOutlinedButton}" Margin="10" HorizontalAlignment="Left" Click="btnDeleteAccept" Background="#B2FF3535" Foreground="#FF494444" BorderBrush="#1F898989"  >Применить</Button>
+                    </StackPanel>
+                    <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right">
+                        <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"  Style="{StaticResource MaterialDesignOutlinedButton}" Margin="10" HorizontalAlignment="Right" Foreground="#FF535353" >Отмена</Button>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
+
+
+
+        <materialDesign:DialogHost CloseOnClickAway="True" x:Name="Error" >
+            <materialDesign:DialogHost.DialogContent >
+                <Grid>
+                    <TextBlock x:Name="txtError" Padding="20"></TextBlock>
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
+
+    </Grid>
+</Window>

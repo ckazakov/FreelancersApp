@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:FreelancersApp"
         mc:Ignorable="d"
  xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Добавить фрилансера" Height="915" Width="1308" Closing="Window_Closing" Icon="user.png" >
+        Title="Добавить фрилансера" Height="800" Width="1308" Closing="Window_Closing" Icon="idcard.png" >
     <Grid>
 
 
@@ -22,22 +22,21 @@
         </Grid.RowDefinitions>
 
 
-        <Button Grid.Row="7" Margin="0,50,20,17" HorizontalAlignment="Right" Height="Auto" Width="86" Click="Button_Click_1" Grid.Column="1">Таблица</Button>
-        <TextBox x:Name="fullName" materialDesign:HintAssist.Hint="Имя Фамилия Отчество" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="55,17,0,0"  VerticalAlignment="Top" Width="304" FontSize="16" Text="" TextWrapping="WrapWithOverflow" Height="71" />
-        <TextBox x:Name="dateOfBirth" materialDesign:HintAssist.Hint="Дата Рождения" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="364,17,0,0"  VerticalAlignment="Top" Width="143"  FontSize="16" Text="" Height="71"/>
-        <TextBox x:Name="userEmail" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="512,17,0,0"  VerticalAlignment="Top" Width="280"  FontSize="16" Text="" Height="71" Grid.ColumnSpan="2"/>
-        <TextBox materialDesign:HintAssist.Hint="Email Пароль" x:Name="emailPass" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="797,17,0,0"  VerticalAlignment="Top" Width="161"  FontSize="16" Text="" Height="71"/>
-        <TextBox materialDesign:HintAssist.Hint="Номер Телефона" x:Name="phoneNumber" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="963,17,0,0" VerticalAlignment="Top" Width="157"  FontSize="16" Text="+79" LostFocus="phoneNumber_LostFocus" Height="71"  />
-        <TextBox materialDesign:HintAssist.Hint="Регистрация" x:Name="registredDate" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="1125,17,0,0"  VerticalAlignment="Top" Width="152"  FontSize="16" Text=""/>
-        <TextBox x:Name="txtbxFreelancerLogin" materialDesign:HintAssist.Hint="Freelancer Логин" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="55,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="" Grid.Row="1" />
-        <TextBox materialDesign:HintAssist.Hint="Freelancer Пароль" x:Name="freelancerPass" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="255,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="166" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="" Grid.Row="1"/>
-        <TextBox x:Name="txtbxPayoneerLogin" materialDesign:HintAssist.Hint="Payonner Email" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="57,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="283" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="" Grid.Row="2" />
-        <TextBox materialDesign:HintAssist.Hint="Payonner Пароль" x:Name="payoneerPass" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="345,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="" Grid.Row="2"/>
-        <TextBox x:Name="txtbxPayoneerQuestion" materialDesign:HintAssist.Hint="Секретный Вопрос?" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="520,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="482" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="" Grid.Row="2"/>
-        <TextBox x:Name="txtbxPayoneerAnswer" materialDesign:HintAssist.Hint="Ответ" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="1007,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="name1" Grid.Row="2"/>
-        <TextBox x:Name="txtbxPaypalEmail" materialDesign:HintAssist.Hint="PayPal Email" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="57,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="283" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="" Grid.Row="3" />
-        <TextBox materialDesign:HintAssist.Hint="PayPal Пароль" x:Name="paypalPass" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="345,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="" Grid.Row="3"/>
-        <ToggleButton x:Name="tglPaypalVerify" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="520,20,0,20" Grid.Row="3" HorizontalAlignment="Left" Width="89" Grid.ColumnSpan="2">
+        <TextBox x:Name="fullName" materialDesign:HintAssist.Hint="Имя Фамилия Отчество" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="55,12,0,0"  VerticalAlignment="Top" Width="304" FontSize="16" Text="" Height="71"  />
+        <TextBox x:Name="dateOfBirth" materialDesign:HintAssist.Hint="Дата Рождения" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="364,12,0,0"  VerticalAlignment="Top" Width="143"  FontSize="16" Text="" Height="71"/>
+        <TextBox x:Name="userEmail" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="512,12,0,0"  VerticalAlignment="Top" Width="280"  FontSize="16" Text="" Height="71"/>
+        <TextBox x:Name="emailPass" materialDesign:HintAssist.Hint="Email Пароль"  Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="797,12,0,0"  VerticalAlignment="Top" Width="161"  FontSize="16" Text="" Height="71"/>
+        <TextBox x:Name="phoneNumber" materialDesign:HintAssist.Hint="Номер Телефона"  Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="963,12,0,0" VerticalAlignment="Top" Width="157"  FontSize="16" Text="+79" LostFocus="phoneNumber_LostFocus" Height="71"  />
+        <TextBox x:Name="registredDate" materialDesign:HintAssist.Hint="Регистрация"  Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="1125,12,0,0"  VerticalAlignment="Top" Width="152"  FontSize="16" Text=""/>
+        <TextBox x:Name="txtbxFreelancerLogin" materialDesign:HintAssist.Hint="Freelancer Логин" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="56,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="" Grid.Row="1" />
+        <TextBox x:Name="freelancerPass" materialDesign:HintAssist.Hint="Freelancer Пароль"  Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="256,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="166" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="" Grid.Row="1"/>
+        <TextBox x:Name="txtbxPayoneerLogin" materialDesign:HintAssist.Hint="Payonner Email" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="57,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="283" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="" Grid.Row="2" />
+        <TextBox x:Name="payoneerPass" materialDesign:HintAssist.Hint="Payonner Пароль"  Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="345,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="" Grid.Row="2"/>
+        <TextBox x:Name="txtbxPayoneerQuestion" materialDesign:HintAssist.Hint="Секретный Вопрос?" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="520,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="482" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="" Grid.Row="2"/>
+        <TextBox x:Name="txtbxPayoneerAnswer" materialDesign:HintAssist.Hint="Ответ" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="1007,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="name1" Grid.Row="2"/>
+        <TextBox x:Name="txtbxPaypalEmail" materialDesign:HintAssist.Hint="PayPal Email" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="57,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="283" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="" Grid.Row="3" />
+        <TextBox x:Name="paypalPass" materialDesign:HintAssist.Hint="PayPal Пароль"  Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="345,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="" Grid.Row="3"/>
+        <ToggleButton x:Name="tglPaypalVerify" Style="{StaticResource MaterialDesignSwitchToggleButton}" Margin="520,10,0,10" Grid.Row="3" HorizontalAlignment="Left" Width="93" Background="#FFBBF7A4" Foreground="#FFBBF7A4">
             <materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
                 <SolidColorBrush Color="Green" />
             </materialDesign:ToggleButtonAssist.SwitchTrackOnBackground>
@@ -45,32 +44,33 @@
                 <SolidColorBrush Color="Red" />
             </materialDesign:ToggleButtonAssist.SwitchTrackOffBackground>
         </ToggleButton>
-        <TextBox materialDesign:HintAssist.Hint="Номер телефона" x:Name="qiwiPhone"  Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="53,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197" RenderTransformOrigin="0.5,0.478" FontSize="16"  Grid.Row="4" MaxLines="1"/>
-        <TextBox materialDesign:HintAssist.Hint="QIWI Пароль" x:Name="qiwiPass" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="255,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="166" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="" Grid.Row="4" MaxLines="1"/>
-        <TextBox x:Name="txtbxBankName" materialDesign:HintAssist.Hint="Банк" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="496,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="81" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="QIWI" Grid.Row="4" Grid.ColumnSpan="2" />
-        <TextBox x:Name="txtbxBankCardNumber" materialDesign:HintAssist.Hint="Номер Карты" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="582,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="" Grid.Row="4" MaxLines="1"/>
-        <TextBox x:Name="txtbxBankCardMonthYear" materialDesign:HintAssist.Hint="До М/Г" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="761,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="" Grid.Row="4" MaxLines="1"/>
-        <TextBox x:Name="txtbxBankCardCvc" materialDesign:HintAssist.Hint="Код" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="851,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="61" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="" Grid.Row="4" MaxLines="1"/>
-        <TextBox x:Name="txtbxBankNumber20" materialDesign:HintAssist.Hint="Банк" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="53,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="207" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="" Grid.Row="5"  />
-        <TextBox x:Name="txtbxBankBIC" materialDesign:HintAssist.Hint="БИК" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="265,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="040702615" Grid.Row="5" MaxLines="1"/>
-        <TextBox x:Name="txtbxBankINN" materialDesign:HintAssist.Hint="ИНН" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="382,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="7707083893" Grid.Row="5" MaxLines="1"/>
-        <TextBox x:Name="txtbxHomeAddress" materialDesign:HintAssist.Hint="Прописка" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="57,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="676" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="" Grid.Row="6" Grid.ColumnSpan="2" />
-        <TextBox x:Name="txtAnydesk" materialDesign:HintAssist.Hint="AnyDesk" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="520,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="" Grid.Row="1" />
+        <TextBox x:Name="qiwiPhone" materialDesign:HintAssist.Hint="Номер телефона"   Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="53,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197" RenderTransformOrigin="0.5,0.478" FontSize="16"  Grid.Row="4" MaxLines="1"/>
+        <TextBox x:Name="qiwiPass" materialDesign:HintAssist.Hint="QIWI Пароль"  Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="255,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="166" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="" Grid.Row="4" MaxLines="1"/>
+        <TextBox x:Name="txtbxBankName" materialDesign:HintAssist.Hint="Банк" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="496,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="81" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="QIWI" Grid.Row="4" />
+        <TextBox x:Name="txtbxBankCardNumber" materialDesign:HintAssist.Hint="Номер Карты" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="582,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="174" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="" Grid.Row="4" MaxLines="1"/>
+        <TextBox x:Name="txtbxBankCardMonthYear" materialDesign:HintAssist.Hint="До М/Г" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="761,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="" Grid.Row="4" MaxLines="1"/>
+        <TextBox x:Name="txtbxBankCardCvc" materialDesign:HintAssist.Hint="Код" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="851,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="61" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="" Grid.Row="4" MaxLines="1"/>
+        <TextBox x:Name="txtbxBankNumber20" materialDesign:HintAssist.Hint="Банк" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="53,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="207" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="" Grid.Row="5"  />
+        <TextBox x:Name="txtbxBankBIC" materialDesign:HintAssist.Hint="БИК" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="265,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="112" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="040702615" Grid.Row="5" MaxLines="1"/>
+        <TextBox x:Name="txtbxBankINN" materialDesign:HintAssist.Hint="ИНН" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="382,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="138" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="7707083893" Grid.Row="5" MaxLines="1"/>
+        <TextBox x:Name="txtbxHomeAddress" materialDesign:HintAssist.Hint="Прописка" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="57,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="676" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="" Grid.Row="6" />
+        <TextBox x:Name="txtAnydesk" materialDesign:HintAssist.Hint="AnyDesk" Style="{StaticResource MaterialDesignFilledTextFieldTextBox}" HorizontalAlignment="Left" Margin="521,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" RenderTransformOrigin="0.5,0.478" FontSize="16" Text="" Grid.Row="1" />
 
-        <Button Content="Сгенерировать Пароли" Style="{StaticResource MaterialDesignRaisedAccentButton}" HorizontalAlignment="Left" Margin="603,65,0,0" VerticalAlignment="Top" Width="130" Height="18" FontSize="11" Padding="0" FontWeight="Normal" VerticalContentAlignment="Top" Click="Button_Click" Grid.Row="7"/>
-        <Button Content="Сгенерировать Банковский Счет" Style="{StaticResource MaterialDesignRaisedAccentButton}" HorizontalAlignment="Left" Margin="55,95,0,0" VerticalAlignment="Top" Width="465" Height="16" FontSize="11" Padding="0" FontWeight="Normal" VerticalContentAlignment="Top" Grid.Row="5" Grid.RowSpan="2"/>
-        <Button x:Name="btnAddFreelancer" Margin="23,50,0,13" HorizontalAlignment="Left" Height="Auto" Width="218" Click="btnAddFreelancer_Click"  Content="Добавить Фрилансера" Grid.Row="7"/>
+        <Button Content="Сгенерировать Банковский Счет" Style="{StaticResource MaterialDesignRaisedAccentButton}" HorizontalAlignment="Left" Margin="55,88,0,0" VerticalAlignment="Top" Width="465" Height="16" FontSize="11" Padding="0" FontWeight="Normal" VerticalContentAlignment="Top" Grid.Row="5" Grid.RowSpan="2"/>
+        <Button Content="Сгенерировать Пароли" Style="{StaticResource MaterialDesignFlatAccentBgButton}" Margin="566,47,566,21" Height="28" FontSize="11" Padding="0" FontWeight="Normal" VerticalContentAlignment="Center" Click="Button_Click" Grid.Row="7" />
+        <Button x:Name="btnAddFreelancer"   Margin="20,46,0,21" HorizontalAlignment="Left" Height="28" Width="219" Click="btnAddFreelancer_Click"  Content="Добавить Фрилансера" Grid.Row="7" Foreground="#DD131313" FontWeight="Normal" FontSize="12" Background="#FF81D4FA" BorderBrush="#FF81D4FA" />
+        <Button Grid.Row="7" Margin="0,46,20,21" HorizontalAlignment="Right" Height="28" Width="86" Click="Button_Click_1" Background="#FFF3E9AD" BorderBrush="#FFFFEA6E" Foreground="#DD2B2B2B" FontWeight="Normal" FontSize="12">Таблица</Button>
 
 
-        <Image Margin="457,50,0,0" Grid.Row="1" Source="anydesk.png" Height="30" Width="30" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <Image HorizontalAlignment="Left" Height="27" Margin="7,40,0,0" VerticalAlignment="Top" Width="40" Source="NameInfo.png"/>
-        <Image HorizontalAlignment="Left" Height="30" Margin="12,32,0,0" Grid.Row="4" VerticalAlignment="Top" Width="30" Source="qiwi.png"/>
-        <Image HorizontalAlignment="Left" Height="30" Margin="12,40,0,0" Grid.Row="5" VerticalAlignment="Top" Width="30" Source="bank.png"/>
-        <Image HorizontalAlignment="Left" Height="30" Margin="12,42,0,0" Grid.Row="6" VerticalAlignment="Top" Width="30" Source="address.png"/>
-        <Image HorizontalAlignment="Left" Height="40" Margin="439,32,0,0" Grid.Row="4" VerticalAlignment="Top" Width="40" Source="bankcard.png"/>
-        <Image HorizontalAlignment="Left" Height="30" Margin="12,41,0,0" Grid.Row="3" VerticalAlignment="Top" Width="30" Source="PayPalI.png"/>
-        <Image HorizontalAlignment="Left" Height="30" Margin="12,39,0,0" Grid.Row="2" VerticalAlignment="Top" Width="30" Source="payoneer.png"/>
-        <Image HorizontalAlignment="Left" Height="30" Margin="12,50,0,0" Grid.Row="1" VerticalAlignment="Top" Width="30" Source="freelancer.png"/>
+        <Image HorizontalAlignment="Left" Height="34" Margin="7,37,0,0" VerticalAlignment="Top" Width="39" Source="idcard.png"/>
+        <Image HorizontalAlignment="Left" Height="30" Margin="13,41,0,0" Grid.Row="1" VerticalAlignment="Top" Width="30" Source="freelancer.png"/>
+        <Image Margin="458,40,0,0" Grid.Row="1" Source="anydesk.png" Height="30" Width="30" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Image HorizontalAlignment="Left" Height="30" Margin="12,40,0,0" Grid.Row="2" VerticalAlignment="Top" Width="30" Source="payoneern.png"/>
+        <Image HorizontalAlignment="Left" Height="30" Margin="12,40,0,0" Grid.Row="3" VerticalAlignment="Top" Width="30" Source="paypal.png"/>
+        <Image HorizontalAlignment="Left" Height="30" Margin="12,40,0,0" Grid.Row="4" VerticalAlignment="Top" Width="30" Source="qiwi.png"/>
+        <Image HorizontalAlignment="Left" Height="30" Margin="12,38,0,0" Grid.Row="5" VerticalAlignment="Top" Width="30" Source="bankaccount.png"/>
+        <Image HorizontalAlignment="Left" Height="30" Margin="12,43,0,0" Grid.Row="6" VerticalAlignment="Top" Width="30" Source="address.png"/>
+        <Image HorizontalAlignment="Left" Height="28" Margin="439,41,0,0" Grid.Row="4" VerticalAlignment="Top" Width="40" Source="card.png"/>
 
 
         <materialDesign:DialogHost BorderBrush="{DynamicResource MaterialDesignDivider}" Margin="0" Grid.RowSpan="8" Width="1308" x:Name="DialogAddFreelancer">
@@ -84,10 +84,10 @@
                         </TextBlock>
                     </StackPanel>
                     <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Left">
-                        <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignOutlinedButton}" Margin="10" HorizontalAlignment="Left" >Закрыть</Button>
+                        <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignOutlinedButton}" Margin="10" HorizontalAlignment="Left" Foreground="#FF424141" BorderBrush="#662C2C2C" >Закрыть</Button>
                     </StackPanel>
                     <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right">
-                        <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Click="Button_Click_1" Style="{StaticResource MaterialDesignOutlinedButton}" Margin="10" HorizontalAlignment="Right" >Перейти к таблице</Button>
+                        <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Click="Button_Click_1" Style="{StaticResource MaterialDesignOutlinedButton}" Margin="10" HorizontalAlignment="Right" Background="#FFF3E9AD" BorderBrush="#FFFFEA6E" Foreground="#DD2B2B2B" >Перейти к таблице</Button>
                     </StackPanel>
                 </Grid>
             </materialDesign:DialogHost.DialogContent>

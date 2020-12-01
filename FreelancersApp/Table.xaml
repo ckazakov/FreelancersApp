@@ -3,56 +3,61 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:FreelancersApp"
         mc:Ignorable="d"
-        Title="Список Фрилансеров" Height="915" Width="1296" Icon="free.png">
+        Title="Список Фрилансеров" Height="915" Width="1582" Icon="database.png">
     <Grid>
-        <DataGrid x:Name="DataGridv" Margin="0,0,0,76" ScrollViewer.HorizontalScrollBarVisibility="Visible" CellEditEnding="DataGridv_CellEditEnding" AutoGenerateColumns ="False" SelectionMode="Single" SelectionUnit="FullRow" BeginningEdit="DataGridv_BeginningEdit"  >
+
+        <DataGrid x:Name="DataGridv" Margin="0,0,0,71" ScrollViewer.HorizontalScrollBarVisibility="Visible" CellEditEnding="DataGridv_CellEditEnding" AutoGenerateColumns ="False" SelectionMode="Single" SelectionUnit="FullRow" BeginningEdit="DataGridv_BeginningEdit"      >
             <DataGrid.Resources>
                 <Style TargetType="DataGridRow">
                     <EventSetter Event="MouseLeftButtonUp" Handler="MouseLeftClickToRow"/>
                     <Style.Triggers>
                         <Trigger Property="IsMouseOver"
                              Value="True">
-                            <Setter Property="Background"
-                                Value="#FFECECEC" />
+                            <Setter Property="Background" Value="#68A2DADA" />
                         </Trigger>
                         <Trigger Property="IsEditing"
                              Value="True">
-                            <Setter Property="Background"
-                                Value="#68A2DADA" />
-                        </Trigger>
+                            <Setter Property="Background" Value="#68A2DADA" />
+                            <Setter Property="BorderBrush" Value="#68A2DADA" />
+                            <Setter Property="BorderThickness" Value="10" />
+                        </Trigger> 
                     </Style.Triggers>
                 </Style>
+
+
+
             </DataGrid.Resources>
 
 
 
+
             <DataGrid.Columns>
-                <materialDesign:DataGridTextColumn  Binding="{Binding Id}" Header="ID"/>
-                <materialDesign:DataGridTextColumn  Binding="{Binding FullName}" Header="Имя Фамилия Отчество" />
+                <materialDesign:DataGridTextColumn  Binding="{Binding Id}" Header="ID" IsReadOnly="True"/>
+                <materialDesign:DataGridTextColumn  Binding="{Binding FullName}" Header="Имя Фамилия Отчество" IsReadOnly="False"/>
                 <materialDesign:DataGridTextColumn  Binding="{Binding DateOfBirth}"  Header="Дата Рождения"  />
                 <materialDesign:DataGridTextColumn  Binding="{Binding UserEmail}" Header="Email" />
                 <materialDesign:DataGridTextColumn  Binding="{Binding EmailPass}" Header="Email Пароль" />
-                <materialDesign:DataGridTextColumn  Binding="{Binding PhoneNumber}" Header="Номер телефона" />
+                <materialDesign:DataGridTextColumn  Binding="{Binding QiwiPhone}" Header="QIWI Номер" />
+                <materialDesign:DataGridTextColumn  Binding="{Binding QiwiPass}" Header="QIWI Пароль" />
                 <materialDesign:DataGridTextColumn  Binding="{Binding PayoneerLogin}" Header="Payoneer" />
                 <materialDesign:DataGridTextColumn  Binding="{Binding PayoneerPass}" Header="Payoneer Пароль" />
                 <materialDesign:DataGridTextColumn  Binding="{Binding PayoneerQuestion}" Header="Payoneer Секретный Вопрос?" />
                 <materialDesign:DataGridTextColumn  Binding="{Binding PayoneerAnswer}" Header="Ответ" />
+                <materialDesign:DataGridTextColumn  Binding="{Binding Anydesk}" Header="Anydesk" />
+                <materialDesign:DataGridTextColumn  Binding="{Binding BankName}" Header="Банк" />
                 <materialDesign:DataGridTextColumn  Binding="{Binding BankCardNumber}" Header="Номер карты" />
                 <materialDesign:DataGridTextColumn  Binding="{Binding BankCardMonthYear}" Header="MM/YY" />
                 <materialDesign:DataGridTextColumn  Binding="{Binding BankCardCvc}" Header="Код" />
-                <materialDesign:DataGridTextColumn  Binding="{Binding Anydesk}" Header="Anydesk" />
-                <materialDesign:DataGridTextColumn  Binding="{Binding QiwiPhone}" Header="QIWI Номер" />
-                <materialDesign:DataGridTextColumn  Binding="{Binding QiwiPass}" Header="QIWI Пароль" />
                 <materialDesign:DataGridTextColumn  Binding="{Binding PaypalEmail}" Header="PayPal Email" />
                 <materialDesign:DataGridTextColumn  Binding="{Binding PaypalPass}" Header="PayPal Пароль" />
                 <materialDesign:DataGridTextColumn  Binding="{Binding PaypalVerify}" Header="PayPal V" />
-                <materialDesign:DataGridTextColumn  Binding="{Binding BankName}" Header="Банк" />
                 <materialDesign:DataGridTextColumn  Binding="{Binding BankNumber20}" Header="Банковский счет" />
                 <materialDesign:DataGridTextColumn  Binding="{Binding BankBIC}" Header="БИК" />
                 <materialDesign:DataGridTextColumn  Binding="{Binding BankINN}" Header="ИНН" />
+                <materialDesign:DataGridTextColumn  Binding="{Binding PhoneNumber}" Header="Номер телефона" />
                 <materialDesign:DataGridTextColumn  Binding="{Binding HomeAddress}" Header="Прописка" />
                 <materialDesign:DataGridTextColumn  Binding="{Binding FreelancerLogin}" Header="Freelancer Логин" />
                 <materialDesign:DataGridTextColumn  Binding="{Binding FreelancerPass}" Header="Freelancer Пароль" />
@@ -63,18 +68,25 @@
         </DataGrid>
 
         <Button Content="Добавить Фрилансера" Style="{StaticResource MaterialDesignRaisedAccentButton}" Margin="21,0,0,24" Height="28" FontSize="11" Padding="0" FontWeight="Normal" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="219" Click="Button_Click" />
-        <Button Content="Обновить Таблицу" Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="250,0,0,24" Height="28" FontSize="11" Padding="0" FontWeight="Normal" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="220" Click="btnRefreshTable"  />
-        <Button Content="Таблица заблокированных" Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="0,0,0,24" Height="28" FontSize="11" Padding="0" FontWeight="Normal" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="220" Click="" Background="#FFF3E9AD" BorderBrush="#FFF3F79D"  />
-        <Button Content="Заблокирован " Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="0,0,250,24" Height="28" FontSize="11" Padding="0" FontWeight="Normal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="220" Click="" Background="#FFF3B9AD" BorderBrush="#FFF79D9D"  />
-        <Button Content="Удалить строку" Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="0,0,21,24" Height="28" FontSize="11" Padding="0" FontWeight="Normal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="220" Click="btnDeleteRow" Background="#FFFF8E76" BorderBrush="#FFE47A7A"  />
+        <Button Content="Обновить Таблицу"  Margin="365,0,0,24" Height="28" FontSize="11" Padding="0" FontWeight="Normal" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="220" Click="btnRefreshTable" Background="#FF7EE6E6" Foreground="#DD1F1F1F" BorderBrush="#FF7EE6E6"  />
+        <Button x:Name="countOfActiveUsers" Content="Активных: ##"  Margin="0,0,0,24" Height="28" FontSize="11" Padding="0" FontWeight="Bold" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="220" Background="#FFCCF9F9" Foreground="#DD1F1F1F" BorderBrush="{x:Null}" Focusable="False" IsTabStop="False"  />
+        <Button Content="Пользователь заблокирован" Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="0,0,365,24" Height="28" FontSize="11" Padding="0" FontWeight="Normal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="220" Click="clickBtnAddThisToBlockedUsers" Background="#FFF3B9AD" BorderBrush="#FFF79D9D"  />
+        <Button Content="Таблица заблокированных" Style="{StaticResource MaterialDesignRaisedLightButton}" Margin="0,0,21,24" Height="28" FontSize="11" Padding="0" FontWeight="Normal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="220" Click="clickBtnGoToUserBlockedTable" Background="#FFF3E9AD" BorderBrush="#FFF3F79D"  />
 
 
-        <materialDesign:DialogHost BorderBrush="{DynamicResource MaterialDesignDivider}" Margin="0,0,-8,-3" x:Name="dialogg" >
+        <materialDesign:Snackbar  MessageQueue="{materialDesign:MessageQueue}" HorizontalAlignment="Center" x:Name="SnackMsg" MouseEnter="SnackMsg_MouseEnter">
+            <materialDesign:SnackbarMessage x:Name="SnackMsg_Content" />
+        </materialDesign:Snackbar>
+        
+        
+
+        <materialDesign:DialogHost BorderBrush="{DynamicResource MaterialDesignDivider}" x:Name="dialogg" >
             <materialDesign:DialogHost.DialogContent >
-                <Grid Width="350" Height="200" HorizontalAlignment="Center"  >
+                <Grid Width="350" Height="220" HorizontalAlignment="Center"  >
                     <StackPanel Orientation="Vertical" Margin="15" >
+                        <TextBlock x:Name="FullNameOfRow" Width="200" HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" Margin="0,0,0,5" TextWrapping="Wrap" FontSize="12"></TextBlock>
                         <materialDesign:PackIcon x:Name="PopIcon" Kind="AccountEditOutline" Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5,0,5"/>
-                        <TextBlock x:Name="PopTextBox" Foreground="#FF000000" Width="300" Margin="10,0,10,0" HorizontalAlignment="Center" TextWrapping="Wrap" FontSize="14">
+                        <TextBlock x:Name="PopTextBox" Foreground="#FF000000" Width="300" Margin="10,0,10,0" TextAlignment="Center" HorizontalAlignment="Center" TextWrapping="Wrap" FontSize="14">
                             Вы уверены что хотите изменить значение?
                         </TextBlock>
                     </StackPanel>
@@ -82,25 +94,24 @@
                         <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignOutlinedButton}" Margin="10" HorizontalAlignment="Left" Click="Apply_Changes" >Применить</Button>
                     </StackPanel>
                     <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right">
-                        <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"  Style="{StaticResource MaterialDesignOutlinedButton}" Margin="10" HorizontalAlignment="Right" >Отмена</Button>
+                        <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"  Style="{StaticResource MaterialDesignOutlinedButton}" Margin="10" HorizontalAlignment="Right" Foreground="#FF696A6A" >Отмена</Button>
                     </StackPanel>
                 </Grid>
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
 
 
-
-        <materialDesign:DialogHost BorderBrush="{DynamicResource MaterialDesignDivider}" Margin="0,0,-8,-3" x:Name="AlertDeleteRow" >
+        <materialDesign:DialogHost BorderBrush="{DynamicResource MaterialDesignDivider}" Margin="0" x:Name="AlertSendToBlockedTable" >
             <materialDesign:DialogHost.DialogContent >
-                <Grid Width="300" Height="150" HorizontalAlignment="Center"  >
+                <Grid Width="300" Height="180" HorizontalAlignment="Center"  >
                     <StackPanel Orientation="Vertical" Margin="15" >
-                        <materialDesign:PackIcon Kind="DeleteForever" Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5,0,5" Foreground="#DDF73434"/>
-                        <TextBlock x:Name="txtBlockDelete" Foreground="#FF000000" Width="250" Margin="10,0,10,0" HorizontalAlignment="Center" TextWrapping="Wrap" FontSize="14">
-                            Вы уверены что хотите удалить?
+                        <materialDesign:PackIcon Kind="AccountArrowRight" Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,5,0,5" Foreground="#D80C0C0C"/>
+                        <TextBlock x:Name="txtSendtoUserBlockTable" Foreground="Black" Width="250" Margin="10,0,10,0" HorizontalAlignment="Center" TextWrapping="Wrap" FontSize="14">
+
                         </TextBlock>
                     </StackPanel>
                     <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Left">
-                        <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" Style="{StaticResource MaterialDesignOutlinedButton}" Margin="10" HorizontalAlignment="Left" Click="btnDeleteAccept" Background="#B2FF3535" Foreground="#FF494444" BorderBrush="#1F898989"  >Удалить навсегда!</Button>
+                        <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}" x:Name="nameBtnApply" Style="{StaticResource MaterialDesignOutlinedButton}" Margin="10" HorizontalAlignment="Left" Click="ClickBtnSendToUserBlockedTable" Background="#FFF3B9AD" Foreground="#F7292727" BorderBrush="#66F3B9AD" >Применить</Button>
                     </StackPanel>
                     <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right">
                         <Button Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"  Style="{StaticResource MaterialDesignOutlinedButton}" Margin="10" HorizontalAlignment="Right" Foreground="#FF535353" >Отмена</Button>
@@ -108,6 +119,19 @@
                 </Grid>
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
+
+
+        <materialDesign:DialogHost CloseOnClickAway="True" x:Name="Error" >
+            <materialDesign:DialogHost.DialogContent >
+                <Grid>
+                    <TextBlock x:Name="txtError" Padding="20"></TextBlock>
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+            
+        </materialDesign:DialogHost>
+
+
+
 
 
 
